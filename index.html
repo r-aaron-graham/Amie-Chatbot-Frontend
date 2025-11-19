@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Amie - AI Assistant</title>
-  <!-- Link to your main stylesheet (header/footer, etc.) -->
+
+  <!-- Main stylesheet -->
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
 
@@ -12,11 +13,12 @@
   <style>
     /* 1) Soothing linear blue gradient for the entire page */
     body {
-      background: linear-gradient(135deg, #89cfff 0%, #0056b3 100%) no-repeat center center fixed;
+      background: linear-gradient(135deg, #89cfff 0%, #0056b3 100%) no-repeat
+        center center fixed;
       background-size: cover;
     }
 
-    /* 2) The chat container is now transparent */
+    /* 2) Transparent chat container */
     .chat-page {
       background-color: transparent !important;
       box-shadow: none !important;
@@ -32,7 +34,7 @@
       color: #fff;
     }
 
-    /* 4) The chat window uses a translucent white overlay */
+    /* 4) Translucent white overlay for chat window */
     .chat-window {
       flex: 1;
       overflow-y: auto;
@@ -43,7 +45,7 @@
       min-height: 300px;
     }
 
-    /* 5) Rounded bubble/oval chat messages */
+    /* 5) Rounded chat message bubbles */
     .chat-message {
       max-width: 70%;
       margin-bottom: 1rem;
@@ -53,64 +55,73 @@
       font-size: 1rem;
       color: #333;
     }
-    /* Assistant bubble in a lighter, near-white color */
+
+    /* Assistant bubble */
     .chat-message.assistant {
       background-color: rgba(255, 255, 255, 0.85);
       align-self: flex-start;
     }
-    /* User bubble in a slightly more translucent white */
+
+    /* User bubble */
     .chat-message.user {
       background-color: rgba(255, 255, 255, 0.65);
       align-self: flex-end;
     }
 
-    /* 6) Buttons: consistent with your existing style but adjusted for visibility */
+    /* 6) Buttons */
     .chat-btn.start {
       background-color: #0056b3;
       color: #fff;
     }
+
     .chat-btn.stop {
       background-color: #ff5a5f;
       color: #fff;
     }
+
     .chat-btn.reset {
       background-color: #999999;
       color: #fff;
     }
 
-    /* 7) Chat input area with standard styling */
+    /* 7) Chat input */
     .chat-input input[type="text"] {
       background-color: #fff;
     }
   </style>
 </head>
 <body>
-  <!-- Header (shared across pages) -->
+  <!-- Header -->
   <header class="main-header">
     <nav class="nav-container">
       <div class="logo">
         <h1>Amie</h1>
         <p class="description">Emotional &amp; Mental Health Assistant</p>
       </div>
-      <!-- Navigation links removed as per requirements -->
+      <!-- Navigation links intentionally omitted -->
     </nav>
   </header>
 
-  <!-- Main content: Full-width Chat Interface -->
+  <!-- Main Chat Content -->
   <main>
     <div class="chat-page">
       <div class="chat-header">
         <h2>Chat</h2>
         <div>
-          <button class="chat-btn start" onclick="startConversation()">Start Conversation</button>
-          <button class="chat-btn stop" onclick="stopConversation()">Stop Conversation</button>
-          <button class="chat-btn reset" onclick="resetConversation()">Reset</button>
+          <button class="chat-btn start" onclick="startConversation()">
+            Start Conversation
+          </button>
+          <button class="chat-btn stop" onclick="stopConversation()">
+            Stop Conversation
+          </button>
+          <button class="chat-btn reset" onclick="resetConversation()">
+            Reset
+          </button>
         </div>
       </div>
 
-      <!-- Scrollable chat window with calming chat bubbles -->
+      <!-- Scrollable chat window -->
       <div class="chat-window" id="chatWindow">
-        <!-- Example messages -->
         <div class="chat-message assistant">
           Hello! I'm Amie, your AI assistant. How can I help you today?
         </div>
@@ -119,15 +130,19 @@
         </div>
       </div>
 
-      <!-- Chat input area -->
+      <!-- Chat input -->
       <div class="chat-input">
-        <input type="text" id="userInput" placeholder="Type your message here..." />
+        <input
+          type="text"
+          id="userInput"
+          placeholder="Type your message here..."
+        />
         <button class="chat-send" onclick="sendMessage()">Send</button>
       </div>
     </div>
   </main>
 
-  <!-- Footer (shared across pages) -->
+  <!-- Footer -->
   <footer class="main-footer">
     <div class="footer-content">
       <div class="footer-section">
@@ -157,24 +172,31 @@
     </div>
   </footer>
 
-  <!-- Link to your consolidated script file -->
+  <!-- External enhancements (smooth scroll, header state, etc.) -->
   <script src="script.js"></script>
 
-  <!-- Optional: Inline placeholder for chat logic if not already in script.js -->
+  <!-- Basic chat logic -->
   <script>
     function startConversation() {
       alert("Starting conversation...");
     }
+
     function stopConversation() {
       alert("Stopping conversation...");
     }
+
     function resetConversation() {
-      document.getElementById("chatWindow").innerHTML = "";
+      const chatWindow = document.getElementById("chatWindow");
+      if (chatWindow) {
+        chatWindow.innerHTML = "";
+      }
       alert("Conversation reset.");
     }
+
     function sendMessage() {
       const userInput = document.getElementById("userInput");
       const message = userInput.value.trim();
+
       if (message) {
         const chatWindow = document.getElementById("chatWindow");
         const userMsg = document.createElement("div");
