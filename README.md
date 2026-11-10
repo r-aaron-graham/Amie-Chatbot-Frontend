@@ -15,7 +15,7 @@ Open http://127.0.0.1:8000. Try `active listening` for a response citing
 conversation. Keep input synthetic.
 
 ```bash
-node --test retrieval.test.mjs
+node --test
 ```
 
 The demo runs in the browser with deterministic phrase matching. It makes no
