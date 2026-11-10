@@ -96,7 +96,7 @@
     <nav class="nav-container">
       <div class="logo">
         <h1>Amie</h1>
-        <p class="description">Emotional &amp; Mental Health Assistant</p>
+        <p class="description">Social and emotional learning demo</p>
       </div>
       <!-- Navigation links intentionally omitted -->
     </nav>
@@ -106,109 +106,20 @@
   <main>
     <div class="chat-page">
       <div class="chat-header">
-        <h2>Chat</h2>
-        <div>
-          <button class="chat-btn start" onclick="startConversation()">
-            Start Conversation
-          </button>
-          <button class="chat-btn stop" onclick="stopConversation()">
-            Stop Conversation
-          </button>
-          <button class="chat-btn reset" onclick="resetConversation()">
-            Reset
-          </button>
-        </div>
+        <h2>Try a sample question</h2>
+        <p>Search three fictional classroom activity cards. Use sample text only.</p>
       </div>
-
-      <!-- Scrollable chat window -->
-      <div class="chat-window" id="chatWindow">
-        <div class="chat-message assistant">
-          Hello! I'm Amie, your AI assistant. How can I help you today?
-        </div>
-        <div class="chat-message user">
-          Hi Amie! Can you help me with some tips on mindfulness?
-        </div>
-      </div>
-
-      <!-- Chat input -->
-      <div class="chat-input">
-        <input
-          type="text"
-          id="userInput"
-          placeholder="Type your message here..."
-        />
-        <button class="chat-send" onclick="sendMessage()">Send</button>
-      </div>
+      <p id="sampleQuestions">Try “active listening”, “group roles”, or “weather forecast”.</p>
+      <div class="chat-window" id="chatWindow" role="log" aria-label="Demo conversation"></div>
+      <form class="chat-input" id="chatForm">
+        <input type="text" id="userInput" aria-label="Sample question"
+               aria-describedby="sampleQuestions" maxlength="240" required />
+        <button type="submit" class="chat-send">Send</button>
+        <button type="reset" class="chat-btn reset">Reset</button>
+      </form>
     </div>
   </main>
-
-  <!-- Footer -->
-  <footer class="main-footer">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h3>About Amie</h3>
-        <p>Your trusted emotional and mental health companion, available 24/7.</p>
-      </div>
-      <div class="footer-section">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="blog.html">Blog</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3>Legal</h3>
-        <ul>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="terms.html">Terms of Service</a></li>
-          <li><a href="support.html">Support</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Amie. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <!-- External enhancements (smooth scroll, header state, etc.) -->
   <script src="script.js"></script>
-
-  <!-- Basic chat logic -->
-  <script>
-    function startConversation() {
-      alert("Starting conversation...");
-    }
-
-    function stopConversation() {
-      alert("Stopping conversation...");
-    }
-
-    function resetConversation() {
-      const chatWindow = document.getElementById("chatWindow");
-      if (chatWindow) {
-        chatWindow.innerHTML = "";
-      }
-      alert("Conversation reset.");
-    }
-
-    function sendMessage() {
-      const userInput = document.getElementById("userInput");
-      const message = userInput.value.trim();
-
-      if (message) {
-        const chatWindow = document.getElementById("chatWindow");
-        const userMsg = document.createElement("div");
-        userMsg.classList.add("chat-message", "user");
-        userMsg.textContent = message;
-        chatWindow.appendChild(userMsg);
-        userInput.value = "";
-        chatWindow.scrollTop = chatWindow.scrollHeight;
-
-        // TODO: Connect to your AI backend for real responses
-      }
-    }
-  </script>
+  <script type="module" src="chat.mjs"></script>
 </body>
 </html>
